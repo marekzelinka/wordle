@@ -17,10 +17,8 @@ export function GuessInput({ isDisabled, onSubmit }) {
   };
 
   return (
-    <form onSubmit={handleFormSubmit} className="grid gap-2">
-      <label htmlFor="guess-input" className="block text-xl">
-        Enter guess:
-      </label>
+    <form onSubmit={handleFormSubmit} className="guess-input-wrapper">
+      <label htmlFor="guess-input">Enter guess:</label>
       <input
         type="text"
         id="guess-input"
@@ -31,10 +29,9 @@ export function GuessInput({ isDisabled, onSubmit }) {
         disabled={isDisabled}
         value={tentativeGuess}
         onChange={handleGuessChange}
-        className="block w-full rounded-md border-2 border-gray-300 px-2 py-4 text-2xl outline-offset-4"
         aria-describedby="guess-input-helptext"
       />
-      <p id="guess-input-helptext" className="sr-only">
+      <p id="guess-input-helptext" className="visually-hidden">
         5 letter word
       </p>
     </form>
