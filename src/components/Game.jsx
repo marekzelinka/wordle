@@ -11,18 +11,18 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 export function Game() {
-  const [gameStatus, setGameStatus] = useState("running");
+  const [gameState, setGameState] = useState("running");
 
   const [guesses, setGuesses] = useState([]);
 
-  const handleAddGuess = (tentativeGuess) => {
-    const nextGuesses = guesses.concat(tentativeGuess);
+  const handleAddGuess = (guess) => {
+    const nextGuesses = guesses.concat(guess);
     setGuesses(nextGuesses);
 
-    if (tentativeGuess === answer) {
-      setGameStatus("won");
+    if (guess === answer) {
+      setGameState("won");
     } else if (nextGuesses.length >= NUM_OF_GUESSES_ALLOWED) {
-      setGameStatus("lost");
+      setGameState("lost");
     }
   };
 
@@ -30,12 +30,12 @@ export function Game() {
     <>
       <GuessResults guesses={guesses} answer={answer} />
       <GuessInput
-        isDisabled={gameStatus !== "running"}
+        isDisabled={gameState !== "running"}
         onSubmit={handleAddGuess}
       />
-      {gameStatus === "won" ? (
+      {gameState === "won" ? (
         <WonBanner numOfGuesses={guesses.length} />
-      ) : gameStatus === "lost" ? (
+      ) : gameState === "lost" ? (
         <LostBanner answer={answer} />
       ) : null}
     </>
@@ -48,7 +48,7 @@ function WonBanner({ numOfGuesses }) {
       <p>
         <strong>Congratulations!</strong> Got it in{" "}
         <strong>
-          {numOfGuesses === 1 ? "1 guess" : `${numOfGuesses} guesses`}
+          {`${numOfGuesses} ${numOfGuesses === 1 ? "guess" : "guesses"}`}
         </strong>
         .
       </p>

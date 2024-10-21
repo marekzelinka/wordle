@@ -1,5 +1,4 @@
 import { Game } from "./components/Game.jsx";
-import { Header } from "./components/Header.jsx";
 
 export function App() {
   return (
@@ -9,5 +8,13 @@ export function App() {
         <Game />
       </div>
     </div>
+  );
+}
+
+function Header() {
+  return (
+    <header>
+      <h1>Word game</h1>
+    </header>
   );
 }

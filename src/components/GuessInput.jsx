@@ -1,19 +1,19 @@
 import { useState } from "react";
 
 export function GuessInput({ isDisabled, onSubmit }) {
-  const [tentativeGuess, setTentativeGuess] = useState("");
+  const [guess, setGuess] = useState("");
 
   const handleGuessChange = (event) => {
     const nextGuess = event.target.value.toUpperCase();
-    setTentativeGuess(nextGuess);
+    setGuess(nextGuess);
   };
 
   const handleFormSubmit = (event) => {
     event.preventDefault();
 
-    onSubmit(tentativeGuess);
+    onSubmit(guess);
 
-    setTentativeGuess("");
+    setGuess("");
   };
 
   return (
@@ -27,7 +27,7 @@ export function GuessInput({ isDisabled, onSubmit }) {
         maxLength={5}
         pattern="[a-zA-Z]{5}"
         disabled={isDisabled}
-        value={tentativeGuess}
+        value={guess}
         onChange={handleGuessChange}
         aria-describedby="guess-input-helptext"
       />
