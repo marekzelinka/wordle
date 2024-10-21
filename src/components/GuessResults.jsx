@@ -1,8 +1,12 @@
-export function GuessResults({ gueses }) {
+import { NUM_OF_GUESSES_ALLOWED } from "../utils/game.js";
+import { range } from "../utils/misc.js";
+import { Guess } from "./Guess.jsx";
+
+export function GuessResults({ guesses }) {
   return (
     <div className="flex flex-1 flex-col justify-center gap-1">
-      {gueses.map((guess, i) => (
-        <p key={i}>{guess}</p>
+      {range(NUM_OF_GUESSES_ALLOWED).map((num) => (
+        <Guess key={num} value={guesses[num]} />
       ))}
     </div>
   );

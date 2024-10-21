@@ -10,15 +10,15 @@ const answer = sample(WORDS);
 console.info({ answer });
 
 export function Game() {
-  const [gueses, setGuesses] = useState([]);
+  const [guesses, setGuesses] = useState([]);
 
   const handleAddGuess = (tentativeGuess) => {
-    setGuesses(gueses.concat(tentativeGuess));
+    setGuesses(guesses.concat(tentativeGuess));
   };
 
   return (
     <>
-      <GuessResults gueses={gueses} />
+      <GuessResults guesses={guesses} />
       <GuessInput onSubmit={handleAddGuess} />
     </>
   );
